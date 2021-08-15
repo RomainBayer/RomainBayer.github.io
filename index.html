@@ -532,6 +532,17 @@
             .arrow {
                 display: none;
             }
+           
+            html {
+                transform: rotate(-90deg);
+                transform-origin: left top;
+                width: 100vh;
+                overflow-x: hidden;
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+
         }
     </style>
 </head>
@@ -747,8 +758,8 @@
 
     var widthRange = [0, 800];
 
-
-    const isMobile = navigator.userAgentData.mobile; //resolves true/false
+    var isMobile = false;
+    
 
 
     //SWIPE ONE SLIDE FURTHER AFTER CLICKING ON THE RIGHT BUTTON
@@ -797,28 +808,18 @@
     //ADAPT SCREEN TO SLIDEAMOUNTS AFTER RESIZE
     function resizeFn() {
         var slider = document.getElementById("slider__innerId");
-        // if (window.innerWidth >= widthRange[0] && window.innerWidth < widthRange[1]) {
+        if (window.innerWidth >= widthRange[0] && window.innerWidth < widthRange[1]) {
 
-        //     slider.style.width = "100%";
-        //     radiobuttons[CheckedRadioButtonIndex].checked = false;
-        //     radiobuttons[0].checked = true;
-        //     CheckRadioButton(radiobuttons[0]);
-        //     resetRadio();
-        // } else if (window.innerWidth > widthRange[1]) {
-        //     slider.style.width = (radiobuttons.length * 100) + "%";
-        // }
-
-        
-        if (isMobile) {
             slider.style.width = "100%";
             radiobuttons[CheckedRadioButtonIndex].checked = false;
             radiobuttons[0].checked = true;
             CheckRadioButton(radiobuttons[0]);
-            resetRadio();} 
-        else if (!isMobile) {
-                slider.style.width = (radiobuttons.length * 100) + "%";
+            isMobile = true;
+            resetRadio();
+        } else if (window.innerWidth > widthRange[1]) {
+            slider.style.width = (radiobuttons.length * 100) + "%";
+            isMobile = false;
         }
-
     }
     window.onresize = resizeFn;
     resizeFn();
