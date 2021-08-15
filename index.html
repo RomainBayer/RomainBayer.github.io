@@ -1,189 +1,912 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>CSS Scroll Snap properties</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML / CSS3 Only Content Slider Example</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <style>
+        /* reset */
+        
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        body {
+            line-height: 1
+        }
+        
+        ol,
+        ul {
+            list-style: none
+        }
+        
+        blockquote,
+        q {
+            quotes: none
+        }
+        
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none
+        }
+        
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+        
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+        
         html,
         body {
             height: 100%;
         }
         
         body {
-            margin: 0;
+            color: rgb(0, 0, 0);
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            line-height: 1.5;
+            background-image: url("Images/BackGround.png");
+            backdrop-filter: blur(10px);
+            backdrop-filter: brightness(95%);
             overflow: hidden;
-            background-color: #333;
         }
         
-        #slides {
+        .slider {
+            height: 100%;
+            position: relative;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-flow: row nowrap;
+            -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+            -webkit-box-align: end;
+            -webkit-align-items: flex-end;
+            -ms-flex-align: end;
+            align-items: flex-end;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        
+        .slider__inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            -webkit-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-flow: row nowrap;
+            -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+            -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+        }
+        
+        .slider__inner:hover {
+            cursor: grab;
+        }
+        
+        .slider__inner:active {
+            cursor: grabbing;
+        }
+        
+        .slider__contents {
+            position: relative;
+            top: 0%;
+            left: 0%;
             width: 100%;
-            height: 90%;
-            white-space: nowrap;
-            font-size: 0;
-            transform: translateX(0);
+            padding-left: 12rem;
+            padding-right: 4rem;
+            padding-top: 7rem;
+            /* text-align: center; */
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            flex-direction: row;
         }
         
-        .slide {
+        .slider__mainPage {
+            width: 100%;
+            padding: 5rem;
+            text-align: center;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            -webkit-flex-flow: column nowrap;
+            -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        
+        .slider__image {
+            font-size: 2.7rem;
+        }
+        
+        .imageGames {
+            top: 0;
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        .videoDiv {
+            position: relative;
+            flex: 1.5;
+            width: 100%;
+            padding: 0%;
+            top: 0px;
+        }
+        
+        .slider__info {
+            flex: 1;
+            margin-left: 25pt;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .GameTitle {
+            margin: 0;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+            justify-content: center;
+            font-size: 2em;
+        }
+        
+        .slider__mainPage__caption {
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+            font-size:calc(32px + 1.5vw);
+        }
+        
+        .slider__mainPage__subcaption {
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            font-size:calc(21px + 1.5vw);
+        }
+        
+        .slider__mainPage__txt {
+            color: rgb(0, 0, 0);
+            justify-content: center;
+            font-size: 1.3em;
+            width: 40%;
+            margin-top: 5pt;
+            text-align: center;
+            line-height: 150%;
+        }
+
+        .slider__txt {
+            color: rgb(0, 0, 0);
+            font-size: 1.1em;
+            display: inline-block;
+            max-width: 75%;
+            max-height: 60%;
+            flex: none;
+            text-align: justify;
+            padding-top: 5pt;
+        } 
+        
+        section::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        input[type="radio"] {
+            position: relative;
+            opacity: 0%;
             width: 100%;
             height: 100%;
-            display: inline-block;
-            background-size: cover;
-            background-position: center;
-            background-color: #cccccc;
         }
         
-        .animate {
-            transition: all .5s ease-out;
-        }
-        
-        .slide:nth-child(1) {
-            background-image: url(http://fakeimg.pl/640x480/);
-        }
-        
-        .slide:nth-child(2) {
-            background-image: url(http://fakeimg.pl/641x480/);
-        }
-        
-        .slide:nth-child(3) {
-            background-image: url(http://fakeimg.pl/642x480/);
-        }
-        
-        .slide:nth-child(4) {
-            background-image: url(http://fakeimg.pl/643x480/);
-        }
-        
-        .slide:nth-child(5) {
-            background-image: url(http://fakeimg.pl/644x480/);
-        }
-        
-        .slider>a {
-            display: inline-flex;
-            width: 1.5rem;
-            height: 1.5rem;
-            background: white;
-            text-decoration: none;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin: 0 0 0.5rem 0;
+        .test {
             position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .contain_input {
+            border-radius: 10px;
+            background-position: center;
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            width: 48pt;
+            height: 48pt;
+            margin-left: 3%;
+            margin-right: 3%;
+            margin-bottom: 10pt;
+            filter: grayscale(100%);
+            opacity: 0.4;
+        }
+        
+        .contain_input:hover {
+            filter: none !important;
+            opacity: 1.0 !important;
+        }
+        
+        .gameDesign {
+            background-color: #a63636;
+            content: 'Level Design';
+        }
+        
+        .LevelDesign {
+            background-color: #36a665;
+            content: 'Level Design';
+        }
+        
+        .scripting {
+            background-color: #3667a6;
+            content: 'Level Design';
+        }
+        
+        .modeling {
+            background-color: #a69b36;
+            content: 'Level Design';
+        }
+        
+        .label {
+            border-radius: 4px;
+            font-family: Helvetica;
+            font-size: 1.1em;
+            text-align: center;
+            color: #fff;
+            padding: 5px;
+            line-height: normal;
+            padding-left: 6px;
+            padding-right: 6px;
+            display: inline-block;
+            margin-bottom: 0.3em;
+            margin-right: 0.3em;
+        }
+        
+        .arrow {
+            top: 0;
+            height: 100%;
+            width: 88px;
+            position: absolute;
+            display: block;
+            cursor: pointer;
+            z-index: 9999;
+            justify-content: center;
+            transition: all 0.5s ease;
+        }
+        
+        .arrow:hover {
+            background-color: rgba(84, 96, 124, 0.205);
+            transition: all 0.5s ease;
+        }
+        
+        .rsArrow {
+            right: 0;
+        }
+        
+        .lsArrow {
+            left: 0pt;
+        }
+        
+        .lsArrowIcn {
+            background-image: url(Images/arrowleft.png);
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            height: 64px;
+            width: 64px;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+        }
+        
+        .rsArrowIcn {
+            background-image: url(Images/arrowRight.png);
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            height: 64px;
+            width: 64px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .inputs {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            bottom: 0;
+            z-index: 999999;
+        }
+        
+        .slider__nav {
+            margin: 0;
+            border-radius: 50px;
+            outline: 6px solid rgb(0, 0, 0);
+            outline-offset: -6px;
+            cursor: pointer;
+            flex: auto;
+            width: fit-content;
+            align-items: center;
+            bottom: 0;
+        }
+        
+        .slider__nav:checked {
+            -webkit-animation: check 0.25s linear forwards;
+            animation: check 0.25s linear forwards;
+        }
+        
+        .arrow {
+            display: block;
+        }
+        
+        @media (max-width: 800px) {
+            .slider__contents {
+                /* width: 100%;
+                height: 400%; */
+                flex-direction: column;
+                -webkit-transition: none;
+                transition: none;
+                padding: 0;
+            }
+            .slider__inner {
+                /* width: 100%;
+                height: 400%; */
+                flex-direction: column;
+                -webkit-transition: none;
+                transition: none;
+                -webkit-transform: translateX(0%);
+                transform: translateX(0%);
+                padding: 0;
+            }
+            .videoDiv {
+                width: 100%;
+                padding: 0;
+                flex: none;
+            }
+            .slider__info {
+                padding: 0;
+                padding-bottom: 50pt;
+                flex: none;
+                max-height: 100%;
+                overflow: hidden;
+            }
+            .slider__nav {
+                display: none;
+            }
+            .slider__mainPage__txt {
+                width: 100%;
+            }
+            body {
+                overflow: scroll;
+            }
+            .inputs {
+                display: none;
+            }
+            .arrow {
+                display: none;
+            }
         }
     </style>
 </head>
 
-
-
 <body>
+    <div class="slider">
 
-    <a href="#slide-1">1</a>
-    <a href="#slide-2">2</a>
-    <a href="#slide-3">3</a>
-    <a href="#slide-4">4</a>
-    <a href="#slide-5">5</a>
+        <div class="inputs">
+            <div class="contain_input" style="background-image:url(Images/homeLogo.png);">
+                <input type="radio" name="slider" id="slide1" checked="checked" class="slider__nav" onclick="CheckRadioButton(this)" /></div>
 
-    <div id="slides">
-        <div class="slide" id="slide-1">1</div>
-        <div class="slide" id="slide-2">2</div>
-        <div class="slide" id="slide-3">3</div>
-        <div class="slide" id="slide-4">4</div>
-        <div class="slide" id="slide-5">5</div>
+            <div class="contain_input" style="background-image:url(Images/mosLogo.png);">
+                <input type="radio" name="slider" id="slide2" class="slider__nav" onclick="CheckRadioButton(this)" /></div>
+
+            <div class="contain_input" style="background-image:url(Images/dgLogo.png);">
+                <input type="radio" name="slider" id="slide3" class="slider__nav" onclick="CheckRadioButton(this)" /></div>
+
+            <div class="contain_input" style="background-image:url(Images/cktcLogo.png);">
+                <input type="radio" name="slider" id="slide4" class="slider__nav" onclick="CheckRadioButton(this)" /></div>
+
+            <div class="contain_input" style="background-image:url(Images/sLogo.png);">
+                <input type="radio" name="slider" id="slide4" class="slider__nav" onclick="CheckRadioButton(this)" /></div>
+        </div>
+
+        <div class="rsArrow arrow" onclick="nextSlide()">
+            <div class="rsArrowIcn"></div>
+        </div>
+        <div class="lsArrow arrow" onclick="previousSlide()">
+            <div class="lsArrowIcn"></div>
+        </div>
+
+        <div class="slider__inner" id="slider__innerId">
+
+            <div class="slider__mainPage">
+                <h2 class="slider__mainPage__caption">ROMAIN BAYER</h2>
+                <h3 class="slider__mainPage__subcaption">Technical Game Designer</h3>
+                <br>
+                <p class="slider__mainPage__txt">Hi! Welcome to my portfolio! <br>
+                    Here you will find some of my greatest works in domains like<br>
+                    <span class="label gameDesign">GameDesign</span>,
+                    <span class="label LevelDesign">LevelDesign</span>and
+                    <span class="label scripting">Scripting</span>.</p>
+            </div>
+
+            <!-- Master of salem -->
+            <div class="slider__contents">
+
+                <div class="videoDiv">
+                    <video autoplay muted loop class="imageGames">
+      <source src="Videos/video.mp4" type="video/mp4">
+      <source src="Videos/video.mp4" type="video/ogg">
+      Your browser does not support the video tag.
+    </video>
+                </div>
+
+                <div class="slider__info">
+                    <h2 class="GameTitle">Master of Salem</h2>
+                    <span class="label gameDesign">GameDesign</span>
+                    <span class="label LevelDesign">LevelDesign</span>
+                    <span class="label scripting">Scripting</span><br>
+                    <p2 class="slider__txt"> Master of Salem is a 3D puzzle game that I made with a friend as final-project for my studies at Ludus academy. The project was highly praised for its originality and quality.
+                        <br><br>In Master of Salem, you are sent to the home of Ms. Osborne, accused of witchcraft, to find out if she is a real witch or not. Once arrived, you are trapped in a weird dimension where every wall is misplaced. Use your wand
+                        to move the walls and find your way out! But beware, walls are not your only enemies, gravity too...
+                    </p2>
+                    <ul style="font-weight: bold; font-size: 18px; margin-top: 5pt;">
+                        <li>
+                            • Designed 9 levels and 1 hub
+                        </li>
+                        <li>
+                            • Creation of a Level Manager script
+                        </li>
+                        <li>
+                            • Level decoration
+                        </li>
+                        <li>
+                            • Puzzle mechanic
+                        </li>
+                        <li>
+                            • Debugging/optimisation
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- DoomGuys -->
+            <div class="slider__contents">
+
+                <div class="videoDiv">
+                    <video autoplay muted loop class="imageGames">
+                    <source src="Videos/video2.mp4" type="video/mp4">
+                    <source src="Videos/video2.mp4" type="video/ogg">
+                    Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div class="slider__info">
+                    <h2 class="GameTitle">DoomGuys</h2>
+                    <span class="label gameDesign">GameDesign</span>
+                    <span class="label LevelDesign">LevelDesign</span>
+                    <span class="label scripting">Scripting</span><br>
+                    <p2 class="slider__txt"> DoomGuys is a 2 weeks project that I made during my free time to improve my levelDesign skills. I also used this project to dig deeper into unity and C#. Almost all assets and textures were made by me.
+                    </p2>
+                    <ul style="font-weight: bold; font-size: 18px; margin-top: 5pt;">
+                        <li>
+                            • Creation and implementation of Level Design
+                        </li>
+                        <li>
+                            • Coded a fully playable FPS game
+                        </li>
+                        <li>
+                            • Enemie AI
+                        </li>
+                        <li>
+                            • Texturing
+                        </li>
+                        <li>
+                            • Debugging/optimisation
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Curiosity Killed The Cat -->
+            <div class="slider__contents">
+
+                <div class="videoDiv">
+                    <video autoplay muted loop class="imageGames">
+                    <source src="Videos/video3.mp4" type="video/mp4">
+                    <source src="Videos/video3.mp4" type="video/ogg">
+                    Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div class="slider__info">
+                    <h2 class="GameTitle">Curiosity KILLED The Cat</h2>
+
+                    <span class="label scripting">Scripting</span>
+                    <span class="label modeling">LightArtist</span><br>
+                    <p2 class="slider__txt"> Curiosity KILLED the cat is a 2 days project made for the Global Game Jam 2021. I was in charge of the movement of the cat as for its animations and I also managed the lightning to make the game more appealing and show different times
+                        of the day. In the game, you have to find 9 ways to die so you can join your master in heaven.
+                    </p2>
+                    <ul style="font-weight: bold; font-size: 18px; margin-top: 5pt;">
+                        <li>
+                            • Gameplay Programing
+                        </li>
+                        <li>
+                            • Light management
+                        </li>
+                        <li>
+                            • Made over 10 animations
+                        </li>
+                        <li>
+                            • Programed some events
+                        </li>
+                        <li>
+                            • Assist game designer
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- game -->
+            <div class="slider__contents">
+
+                <div class="videoDiv">
+                    <video autoplay muted loop class="imageGames">
+        <source src="Videos/video4.mp4" type="video/mp4">
+        <source src="Videos/video4.mp4" type="video/ogg">
+        Your browser does not support the video tag.
+      </video>
+                </div>
+
+                <div class="slider__info">
+                    <h2 class="GameTitle">Shogi 3D</h2>
+
+                    <span class="label scripting">Scripting</span>
+                    <span class="label modeling">SDL2 + OpenGL</span><br>
+                    <p2 class="slider__txt"> For my studies, friends and I had to make a Japanese Chess game with C++ and SDL2. Because we finished the project on forhand, I decided to learn OpenGl to generate the chessboard in 3D.
+                    </p2>
+                    <ul style="font-weight: bold; font-size: 18px; margin-top: 5pt;">
+                        <li>
+                            • Gameplay Programing
+                        </li>
+                        <li>
+                            • SDL2 + OpenGL integration
+                        </li>
+                        <li>
+                            • Data-transfer between projects
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>
     </div>
+
 </body>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-<!--Modified Version of Alexander Emashev SlideScript by romain bayer-->
 <script>
-    $(function() {
-        var sliding = startClientX = startPixelOffset = pixelOffset = currentSlide = 0;
-        slideCount = $('.slide').length;
+    var radiobuttons = document.getElementsByClassName("slider__nav");
+    var CheckedRadioButtonIndex = 0;
 
-        $('html').on('mousedown touchstart', slideStart);
-        $('html').on('mouseup touchend', slideEnd);
-        $('html').on('mousemove touchmove', slide);
+    var radiobtn = document.getElementById("slide1");
 
-        /**
-        / Triggers when slide event started
-        */
-        function slideStart(event) {
-            // If it is mobile device redefine event to first touch point
-            if (event.originalEvent.touches)
-                event = event.originalEvent.touches[0];
-            // If sliding not started yet store current touch position to calculate distance in future.
-            if (sliding == 0) {
-                sliding = 1; // Status 1 = slide started.
-                startClientX = event.clientX;
+    function resetRadio() {
+        radiobtn.checked = true;
+    }
+
+    var widthRange = [0, 800];
+
+    var isMobile = false;
+
+
+    //SWIPE ONE SLIDE FURTHER AFTER CLICKING ON THE RIGHT BUTTON
+    function nextSlide() {
+
+        for (let index = 0; index < radiobuttons.length; index++) {
+            if (radiobuttons[index].checked) {
+
+                if (radiobuttons.length - 1 >= index + 1) {
+                    radiobuttons[index].checked = false;
+                    radiobuttons[index + 1].checked = true;
+                    CheckRadioButton(radiobuttons[index + 1]);
+                } else {
+                    radiobuttons[index].checked = false;
+                    radiobuttons[0].checked = true;
+                    CheckRadioButton(radiobuttons[0]);
+                }
+                break;
+            }
+        }
+    }
+
+    //SWIPE ONE SLIDE BACK AFTER CLICKING ON THE LEFT BUTTON
+    function previousSlide() {
+
+        if(isMobile = true)
+
+        for (let index = 0; index < radiobuttons.length; index++) {
+            if (radiobuttons[index].checked) {
+
+                if (0 <= index - 1) {
+                    radiobuttons[index].checked = false;
+                    radiobuttons[index - 1].checked = true;
+                    CheckRadioButton(radiobuttons[index - 1]);
+                } else {
+                    radiobuttons[index].checked = false;
+                    radiobuttons[radiobuttons.length - 1].checked = true;
+                    CheckRadioButton(radiobuttons[radiobuttons.length - 1]);
+                }
+                break;
+            }
+        }
+    }
+
+
+    //ADAPT SCREEN TO SLIDEAMOUNTS AFTER RESIZE
+    function resizeFn() {
+        var slider = document.getElementById("slider__innerId");
+        if (window.innerWidth >= widthRange[0] && window.innerWidth < widthRange[1]) {
+
+            slider.style.width = "100%";
+            radiobuttons[CheckedRadioButtonIndex].checked = false;
+            radiobuttons[0].checked = true;
+            CheckRadioButton(radiobuttons[0]);
+            isMobile = true;
+            resetRadio();
+        } else if (window.innerWidth > widthRange[1]) {
+            slider.style.width = (radiobuttons.length * 100) + "%";
+            isMobile = false;
+        }
+    }
+    window.onresize = resizeFn;
+    resizeFn();
+
+    //ACTIVATE RADIOBUTTON AND DEACTIVATE ALL OTHER RADIOBUTTONS
+    function CheckRadioButton(myElem) {
+
+        var slider = document.getElementById("slider__innerId");
+
+        for (let index = 0; index < radiobuttons.length; index++) {
+
+            radiobuttons[index].parentNode.style.width = "48pt";
+            radiobuttons[index].parentNode.style.height = "48pt";
+            radiobuttons[index].parentNode.style.filter = "grayscale(100%)";
+            radiobuttons[index].parentNode.style.opacity = ".4";
+
+            if (radiobuttons[index].checked) {
+                slider.style.transform = "translateX(-" + ((100 / radiobuttons.length) * index) + "%)";
+                CheckedRadioButtonIndex = index;
             }
         }
 
-        /** Occurs when image is being slid.
-         */
-        function slide(event) {
-            event.preventDefault();
-            if (event.originalEvent.touches)
-                event = event.originalEvent.touches[0];
-            // Distance of slide.
-            var deltaSlide = event.clientX - startClientX;
-            // If sliding started first time and there was a distance.
-            if (sliding == 1 && deltaSlide != 0) {
-                sliding = 2; // Set status to 'actually moving'
-                startPixelOffset = pixelOffset; // Store current offset
-            }
+        var par = myElem.parentNode;
+        par.style.width = "64pt";
+        par.style.height = "64pt";
+        par.style.filter = "none";
+        par.style.opacity = "1";
+    }
 
-            //  When user move image
-            if (sliding == 2) {
-                // Means that user slide 1 pixel for every 1 pixel of mouse movement.
-                var touchPixelRatio = 1;
-                // Check for user doesn't slide out of boundaries
-                if ((currentSlide == 0 && event.clientX > startClientX) ||
-                    (currentSlide == slideCount - 1 && event.clientX < startClientX))
-                // Set ratio to 3 means image will be moving by 3 pixels each time user moves it's pointer by 1 pixel. (Rubber-band effect)
-                    touchPixelRatio = 3;
-                // Calculate move distance.
-                pixelOffset = startPixelOffset + deltaSlide / touchPixelRatio;
-                // Apply moving and remove animation class
-                $('#slides').css('transform', 'translateX(' + pixelOffset + 'px').removeClass();
-            }
+    //PAGEONLOAD
+    window.onload = function() {
+        var slider = document.getElementById("slider__innerId");
+
+        for (let index = 0; index < radiobuttons.length; index++) {
+            radiobuttons[index].parentNode.style.width = "48pt";
+            radiobuttons[index].parentNode.style.height = "48pt";
         }
 
-        /** When user release pointer finish slide moving.
-         */
-        function slideEnd(event) {
-            if (sliding == 1) {
-                // Reset sliding.
-                sliding = 0;
-            }
+        radiobuttons[0].parentNode.style.width = "64pt";
+        radiobuttons[0].parentNode.style.height = "64pt";
+        radiobuttons[0].parentNode.style.filter = "none";
+        radiobuttons[0].parentNode.style.opacity = "1";
 
-            if (sliding == 2) {
-                // Reset sliding.
-                sliding = 0;
-                console.log("RELEASE");
+        slider.style.width = (radiobuttons.length * 100) + "%"
 
-                // Calculate which slide need to be in view.
-                currentSlide = pixelOffset < startPixelOffset ? currentSlide + 1 : currentSlide - 1;
+        resizeFn();
+    };
 
 
-                // Make sure that unexisting slides weren't selected.
-                currentSlide = Math.min(Math.max(currentSlide, 0), slideCount - 1);
+    //MOUSESWIPE=============================================================
+    var startClientX;
+    var DeltaSlide;
+    var IsClicking;
+    var DeadZone = 5;
 
-                // Since in this example slide is full viewport width offset can be calculated according to it.
-                pixelOffset = currentSlide * -$('body').width();
-
-                // Remove style from DOM (look below)
-                $('#temp').remove();
-
-                // Add a translate rule dynamically and asign id to it
-                $('<style id="temp">#slides.animate{transform:translateX(' + pixelOffset + 'px)}</style>').appendTo('head');
-
-                // Add animate class to slider and reset transform prop of this class.
-                $('#slides').addClass('animate').css('transform', '');
-            }
-        }
-
+    //ONCLICK
+    window.addEventListener('mousedown', function(event) {
+        UpdateMouseStart(event);
+        UpdateMouseCoord(event);
+        IsClicking = true;
+        document.getElementById("slider__innerId").style.transitionDuration = "0s";
     });
+
+    function UpdateMouseStart(event) {
+        startClientX = event.clientX;
+    }
+
+    //ONDRAG
+    window.addEventListener('mousemove', function(event) {
+        UpdateMouseCoord(event);
+    });
+
+    function UpdateMouseCoord(event) {
+        var slider = document.getElementById("slider__innerId");
+
+        DeltaSlide = event.clientX - startClientX;
+        var CurrentPos = (radiobuttons.length * 100);
+
+        if (IsClicking) {
+            slider.style.transform = "translateX(calc(-" + (100 / radiobuttons.length) * CheckedRadioButtonIndex + "% + " + DeltaSlide + "px)";
+        }
+    }
+
+    //ONRELEASE
+    window.addEventListener('mouseup', function(event) {
+        HasSlided(event);
+        IsClicking = false;
+        document.getElementById("slider__innerId").style.transitionDuration = "0.5s";
+    });
+
+    function HasSlided(event) {
+
+        if (5 < DeltaSlide) {
+            previousSlide();
+        } else if (-5 > DeltaSlide) {
+            nextSlide();
+        }
+        console.log(DeltaSlide);
+    }
 </script>
 
 </html>
