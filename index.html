@@ -486,7 +486,8 @@
             display: block;
         }
         
-        @media (max-width: 400px) {
+        @media only screen and (max-width: 768px) {
+        /* For mobile phones: */
             .slider__contents {
                 /* width: 100%;
                 height: 400%; */
@@ -746,7 +747,7 @@
         radiobtn.checked = true;
     }
 
-    var widthRange = [0, 400];
+    var widthRange = [0, 768];
 
     var isMobile = false;
 
@@ -906,6 +907,9 @@
         }
         console.log(DeltaSlide);
     }
+
+
+    
 </script>
 
 </html>
