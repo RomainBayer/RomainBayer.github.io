@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HTML / CSS3 Only Content Slider Example</title>
+    <title>Romain Bayer Portfolio</title>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <style>
@@ -303,14 +303,14 @@
             margin: 0;
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
             text-transform: uppercase;
-            font-size:calc(32px + 1.5vw);
+            font-size:calc(24px + 1.5vw);
         }
         
         .slider__mainPage__subcaption {
             font-weight: 700;
             margin: 0;
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-            font-size:calc(21px + 1.5vw);
+            font-size:calc(18px + 1.5vw);
         }
         
         .slider__mainPage__txt {
@@ -533,18 +533,6 @@
                 display: none;
             }
         }
-
-    @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
-        html {
-            transform: rotate(-90deg);
-            transform-origin: left top;
-            width: 100vh;
-            overflow-x: hidden;
-            position: absolute;
-            top: 100%;
-            left: 0;
-        }
-    }
 </style>
 
 </head>
@@ -786,8 +774,6 @@
 
     //SWIPE ONE SLIDE BACK AFTER CLICKING ON THE LEFT BUTTON
     function previousSlide() {
-
-        if(isMobile = true)
 
         for (let index = 0; index < radiobuttons.length; index++) {
             if (radiobuttons[index].checked) {
