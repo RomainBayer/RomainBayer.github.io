@@ -747,7 +747,8 @@
 
     var widthRange = [0, 800];
 
-    var isMobile = false;
+
+    const isMobile = navigator.userAgentData.mobile; //resolves true/false
 
 
     //SWIPE ONE SLIDE FURTHER AFTER CLICKING ON THE RIGHT BUTTON
@@ -796,18 +797,28 @@
     //ADAPT SCREEN TO SLIDEAMOUNTS AFTER RESIZE
     function resizeFn() {
         var slider = document.getElementById("slider__innerId");
-        if (window.innerWidth >= widthRange[0] && window.innerWidth < widthRange[1]) {
+        // if (window.innerWidth >= widthRange[0] && window.innerWidth < widthRange[1]) {
 
+        //     slider.style.width = "100%";
+        //     radiobuttons[CheckedRadioButtonIndex].checked = false;
+        //     radiobuttons[0].checked = true;
+        //     CheckRadioButton(radiobuttons[0]);
+        //     resetRadio();
+        // } else if (window.innerWidth > widthRange[1]) {
+        //     slider.style.width = (radiobuttons.length * 100) + "%";
+        // }
+
+        
+        if (isMobile) {
             slider.style.width = "100%";
             radiobuttons[CheckedRadioButtonIndex].checked = false;
             radiobuttons[0].checked = true;
             CheckRadioButton(radiobuttons[0]);
-            isMobile = true;
-            resetRadio();
-        } else if (window.innerWidth > widthRange[1]) {
-            slider.style.width = (radiobuttons.length * 100) + "%";
-            isMobile = false;
+            resetRadio();} 
+        else if (!isMobile) {
+                slider.style.width = (radiobuttons.length * 100) + "%";
         }
+
     }
     window.onresize = resizeFn;
     resizeFn();
