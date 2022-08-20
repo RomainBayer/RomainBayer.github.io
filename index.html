@@ -11,87 +11,7 @@
     <style>
         /* reset */
         
-        html,
-        body,
-        div,
-        span,
-        applet,
-        object,
-        iframe,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p,
-        blockquote,
-        pre,
-        a,
-        abbr,
-        acronym,
-        address,
-        big,
-        cite,
-        code,
-        del,
-        dfn,
-        em,
-        img,
-        ins,
-        kbd,
-        q,
-        s,
-        samp,
-        small,
-        strike,
-        strong,
-        sub,
-        sup,
-        tt,
-        var,
-        b,
-        u,
-        i,
-        center,
-        dl,
-        dt,
-        dd,
-        ol,
-        ul,
-        li,
-        fieldset,
-        form,
-        label,
-        legend,
-        table,
-        caption,
-        tbody,
-        tfoot,
-        thead,
-        tr,
-        th,
-        td,
-        article,
-        aside,
-        canvas,
-        details,
-        embed,
-        figure,
-        figcaption,
-        footer,
-        header,
-        hgroup,
-        menu,
-        nav,
-        output,
-        ruby,
-        section,
-        summary,
-        time,
-        mark,
-        audio,
-        video {
+        html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
             margin: 0;
             padding: 0;
             border: 0;
@@ -105,17 +25,7 @@
             user-select: none;
         }
         
-        article,
-        aside,
-        details,
-        figcaption,
-        figure,
-        footer,
-        header,
-        hgroup,
-        menu,
-        nav,
-        section {
+        article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
             display: block;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -129,13 +39,11 @@
             line-height: 1
         }
         
-        ol,
-        ul {
+        ol,ul {
             list-style: none
         }
         
-        blockquote,
-        q {
+        blockquote,q {
             quotes: none
         }
         
@@ -168,7 +76,7 @@
             font-family: 'Roboto', sans-serif;
             font-size: 1rem;
             line-height: 1.5;
-            background-image: url("Images/BackGround.png");
+            background-image: url("Images/lol2.png");
             backdrop-filter: blur(10px);
             backdrop-filter: brightness(95%);
             overflow: hidden;
@@ -211,7 +119,7 @@
             -webkit-transform: translateX(0%);
             transform: translateX(0%);
         }
-        
+
         .slider__inner:hover {
             cursor: grab;
         }
@@ -303,26 +211,16 @@
             margin: 0;
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
             text-transform: uppercase;
-            font-size:calc(24px + 1.5vw);
+            font-size: 4em;
         }
         
         .slider__mainPage__subcaption {
             font-weight: 700;
             margin: 0;
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-            font-size:calc(18px + 1.5vw);
+            font-size: 2em;
         }
         
-        .slider__mainPage__txt {
-            color: rgb(0, 0, 0);
-            justify-content: center;
-            font-size: 1.3em;
-            width: 40%;
-            margin-top: 5pt;
-            text-align: center;
-            line-height: 150%;
-        }
-
         .slider__txt {
             color: rgb(0, 0, 0);
             font-size: 1.1em;
@@ -332,7 +230,16 @@
             flex: none;
             text-align: justify;
             padding-top: 5pt;
-        } 
+        }
+        
+        .slider__mainPage__txt {
+            color: rgb(0, 0, 0);
+            justify-content: center;
+            font-size: 1.3em;
+            width: 40%;
+            margin-top: 5pt;
+            text-align: center;
+        }
         
         section::after {
             content: "";
@@ -382,7 +289,7 @@
             content: 'Level Design';
         }
         
-        .scripting {
+        .Programming {
             background-color: #3667a6;
             content: 'Level Design';
         }
@@ -486,15 +393,18 @@
             display: block;
         }
         
-        @media only screen and (max-width: 768px) {
-        /* For mobile phones: */
+        @media (max-width: 800px) {
             .slider__contents {
+                /* width: 100%;
+                height: 400%; */
                 flex-direction: column;
                 -webkit-transition: none;
                 transition: none;
                 padding: 0;
             }
             .slider__inner {
+                /* width: 100%;
+                height: 400%; */
                 flex-direction: column;
                 -webkit-transition: none;
                 transition: none;
@@ -530,28 +440,36 @@
                 display: none;
             }
         }
-</style>
-
+    </style>
 </head>
 
 <body>
     <div class="slider">
 
         <div class="inputs">
+            <!--  <div class="contain_input" style="background-image:url(rom.jpg);">
+                <input type="radio" name="slider" id="slide0"  class="slider__nav" onclick="CheckRadioButton(this)" /></div>
+ -->
             <div class="contain_input" style="background-image:url(Images/homeLogo.png);">
                 <input type="radio" name="slider" id="slide1" checked="checked" class="slider__nav" onclick="CheckRadioButton(this)" /></div>
 
-            <div class="contain_input" style="background-image:url(Images/mosLogo.png);">
-                <input type="radio" name="slider" id="slide2" class="slider__nav" onclick="CheckRadioButton(this)" /></div>
+                <div class="contain_input" style="background-image:url(Images/bLogo.png);">
+                    <input type="radio" name="slider" id="slide2" class="slider__nav" onclick="CheckRadioButton(this)" /></div>
 
-            <div class="contain_input" style="background-image:url(Images/dgLogo.png);">
+            <div class="contain_input" style="background-image:url(Images/mosLogo.png);">
                 <input type="radio" name="slider" id="slide3" class="slider__nav" onclick="CheckRadioButton(this)" /></div>
 
-            <div class="contain_input" style="background-image:url(Images/cktcLogo.png);">
+            <div class="contain_input" style="background-image:url(Images/dgLogo.png);">
                 <input type="radio" name="slider" id="slide4" class="slider__nav" onclick="CheckRadioButton(this)" /></div>
 
-            <div class="contain_input" style="background-image:url(Images/sLogo.png);">
-                <input type="radio" name="slider" id="slide4" class="slider__nav" onclick="CheckRadioButton(this)" /></div>
+                <div class="contain_input" style="background-image:url(Images/mLogo.png);">
+                    <input type="radio" name="slider" id="slide5" class="slider__nav" onclick="CheckRadioButton(this)" /></div>
+
+            <div class="contain_input" style="background-image:url(Images/cktcLogo.png);">
+                <input type="radio" name="slider" id="slide6" class="slider__nav" onclick="CheckRadioButton(this)" /></div>
+<!-- 
+            <div class="contain_input" style="background-image:url(sLogo.png);">
+                <input type="radio" name="slider" id="slide7" class="slider__nav" onclick="CheckRadioButton(this)" /></div> -->
         </div>
 
         <div class="rsArrow arrow" onclick="nextSlide()">
@@ -563,15 +481,63 @@
 
         <div class="slider__inner" id="slider__innerId">
 
+            <!-- a propos 
             <div class="slider__mainPage">
-                <h2 class="slider__mainPage__caption">ROMAIN BAYER</h2>
-                <h3 class="slider__mainPage__subcaption">Technical Game Designer</h3>
+                <h3 class="slider__mainPage__subcaption">About me</h3>
                 <br>
-                <p class="slider__mainPage__txt">Hi! Welcome to my portfolio! <br>
-                    Here you will find some of my greatest works in domains like<br>
+                <p class="slider__mainPage__txt">Hi! Welcome to my portfolio! Here you will find some of my greatest works in domains like
                     <span class="label gameDesign">GameDesign</span>,
                     <span class="label LevelDesign">LevelDesign</span>and
-                    <span class="label scripting">Scripting</span>.</p>
+                    <span class="label Programming">Programming</span>. You can also watch my video resume down bellow!</p>
+            </div>-->
+
+             <!-- MainPage -->
+            <div class="slider__mainPage">
+                <h2 class="slider__mainPage__caption">ROMAIN BAYER</h2>
+                <h3 class="slider__mainPage__subcaption">Certified Unity Programmer</h3>
+                <br>
+                <p class="slider__mainPage__txt">Hi! Welcome to my portfolio! Here you will find some of my work in 
+                    <br>  <span class="label Programming">Programming</span>,
+                    <span class="label LevelDesign">LevelDesign</span>and
+                    <span class="label gameDesign">GameDesign</span>.  <br>
+                    <a href="https://www.linkedin.com/in/RomainBayer">Let’s Keep In Touch on Linkedin!</a> 
+            </div>
+
+            <!-- BrainShape -->
+            <div class="slider__contents">
+
+                <div class="videoDiv">
+                    <video autoplay muted loop class="imageGames">
+      <source src="Videos/videoBS2.mp4" type="videoBS/mp4">
+      <source src="Videos/videoBS2.mp4" type="video/ogg">
+      Your browser does not support the video tag.
+    </video>
+                </div>
+
+                <div class="slider__info">
+                    <h2 class="GameTitle">BrainShape</h2>
+                    <span class="label Programming">Programming</span>
+                    <span class="label gameDesign">Project-management</span>
+                    <span class="label LevelDesign">LevelDesign</span>
+                    <br>
+                    <p2 class="slider__txt"> BrainShape is a point and click adventure game I developed for the company MathInées using Unity.<br> It aims at introducing people to psychometric tests.<br> The development lasted 8 months, contains 12 levels, 3 endings and an evaluation at the end of the game.
+                    </p2>
+                    <ul style="font-weight: bold; font-size: 18px; margin-top: 5pt;">
+                        <li>
+                            • Team/Project-management
+                        </li>
+                        <li>
+                            • Programmed a whole 3D point and click system
+                        </li>
+                        <li>
+                            • Designed 12 levels
+                        </li>
+                        <li>
+                            • Debugging/optimisation for mobile port
+                        </li>
+                    </ul>
+                </div>
+
             </div>
 
             <!-- Master of salem -->
@@ -589,7 +555,7 @@
                     <h2 class="GameTitle">Master of Salem</h2>
                     <span class="label gameDesign">GameDesign</span>
                     <span class="label LevelDesign">LevelDesign</span>
-                    <span class="label scripting">Scripting</span><br>
+                    <span class="label Programming">Programming</span><br>
                     <p2 class="slider__txt"> Master of Salem is a 3D puzzle game that I made with a friend as final-project for my studies at Ludus academy. The project was highly praised for its originality and quality.
                         <br><br>In Master of Salem, you are sent to the home of Ms. Osborne, accused of witchcraft, to find out if she is a real witch or not. Once arrived, you are trapped in a weird dimension where every wall is misplaced. Use your wand
                         to move the walls and find your way out! But beware, walls are not your only enemies, gravity too...
@@ -620,8 +586,8 @@
 
                 <div class="videoDiv">
                     <video autoplay muted loop class="imageGames">
-                    <source src="Videos/video2.mp4" type="video/mp4">
-                    <source src="Videos/video2.mp4" type="video/ogg">
+                    <source src="Videos/VideoDoom.mp4" type="video/mp4">
+                    <source src="Videos/VideoDoom.mp4" type="video/ogg">
                     Your browser does not support the video tag.
                     </video>
                 </div>
@@ -630,15 +596,15 @@
                     <h2 class="GameTitle">DoomGuys</h2>
                     <span class="label gameDesign">GameDesign</span>
                     <span class="label LevelDesign">LevelDesign</span>
-                    <span class="label scripting">Scripting</span><br>
+                    <span class="label Programming">Programming</span><br>
                     <p2 class="slider__txt"> DoomGuys is a 2 weeks project that I made during my free time to improve my levelDesign skills. I also used this project to dig deeper into unity and C#. Almost all assets and textures were made by me.
                     </p2>
                     <ul style="font-weight: bold; font-size: 18px; margin-top: 5pt;">
                         <li>
-                            • Creation and implementation of Level Design
+                            • Coded a fully playable FPS game
                         </li>
                         <li>
-                            • Coded a fully playable FPS game
+                            • Creation and implementation of Level Design
                         </li>
                         <li>
                             • Enemie AI
@@ -654,13 +620,50 @@
 
             </div>
 
+            <!-- Monkey -->
+            <div class="slider__contents">
+
+                <div class="videoDiv">
+                    <video autoplay muted loop class="imageGames">
+                    <source src="Videos/Monkey2.mp4" type="video/mp4">
+                    <source src="Videos/Monkey2.mp4" type="video/ogg">
+                    Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div class="slider__info">
+                    <h2 class="GameTitle">Monkey Mania Banana</h2>
+
+                    <span class="label Programming">Programming</span>
+                    <span class="label LevelDesign">Level Design</span>
+                    <span class="label modeling">Modeling</span><br>
+                    <p2 class="slider__txt"> Monkey Mania Banana is a platformer I made in my spare time to test out unreal engine. <br>You have to finish a sequence of levels before the timer runs out. Luckily you can collect bananas that will give you some additional time!
+                    </p2>
+                    <ul style="font-weight: bold; font-size: 18px; margin-top: 5pt;">
+                        <li>
+                            • Made a plateformer system in unreal
+                        </li>
+                        <li>
+                            • Made a level management system
+                        </li>
+                        <li>
+                            • All the assets are made by me
+                        </li>
+                        <li>
+                            • Designed 8 levels
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
             <!-- Curiosity Killed The Cat -->
             <div class="slider__contents">
 
                 <div class="videoDiv">
                     <video autoplay muted loop class="imageGames">
-                    <source src="Videos/video3.mp4" type="video/mp4">
-                    <source src="Videos/video3.mp4" type="video/ogg">
+                    <source src="Videos/videoCuriosity.mp4" type="video/mp4">
+                    <source src="Videos/videoCuriosity.mp4" type="video/ogg">
                     Your browser does not support the video tag.
                     </video>
                 </div>
@@ -668,7 +671,7 @@
                 <div class="slider__info">
                     <h2 class="GameTitle">Curiosity KILLED The Cat</h2>
 
-                    <span class="label scripting">Scripting</span>
+                    <span class="label Programming">Programming</span>
                     <span class="label modeling">LightArtist</span><br>
                     <p2 class="slider__txt"> Curiosity KILLED the cat is a 2 days project made for the Global Game Jam 2021. I was in charge of the movement of the cat as for its animations and I also managed the lightning to make the game more appealing and show different times
                         of the day. In the game, you have to find 9 ways to die so you can join your master in heaven.
@@ -694,13 +697,13 @@
 
             </div>
 
-            <!-- game -->
+            <!-- Shogi  
             <div class="slider__contents">
 
                 <div class="videoDiv">
                     <video autoplay muted loop class="imageGames">
-        <source src="Videos/video4.mp4" type="video/mp4">
-        <source src="Videos/video4.mp4" type="video/ogg">
+        <source src="/Videos/VideoSho.mp4" type="video/mp4">
+        <source src="/Videos/VideoSho.mp4" type="video/ogg">
         Your browser does not support the video tag.
       </video>
                 </div>
@@ -708,7 +711,7 @@
                 <div class="slider__info">
                     <h2 class="GameTitle">Shogi 3D</h2>
 
-                    <span class="label scripting">Scripting</span>
+                    <span class="label Programming">Programming</span>
                     <span class="label modeling">SDL2 + OpenGL</span><br>
                     <p2 class="slider__txt"> For my studies, friends and I had to make a Japanese Chess game with C++ and SDL2. Because we finished the project on forhand, I decided to learn OpenGl to generate the chessboard in 3D.
                     </p2>
@@ -727,29 +730,29 @@
 
             </div>
 
-
         </div>
     </div>
-
+-->
 </body>
 
 <script>
-    var radiobuttons = document.getElementsByClassName("slider__nav");
-    var CheckedRadioButtonIndex = 0;
 
-    var radiobtn = document.getElementById("slide1");
+var radiobuttons = document.getElementsByClassName("slider__nav");
 
-    function resetRadio() {
-        radiobtn.checked = true;
-    }
+var CheckedRadioButtonIndex = 0;
+var radiobtn = document.getElementById("slide1");
 
-    var widthRange = [0, 768];
+function resetRadio() {
+    radiobtn.checked = true;
+}
 
-    var isMobile = false;
+var widthRange = [0, 768];
 
+var isMobile = false;
 
     //SWIPE ONE SLIDE FURTHER AFTER CLICKING ON THE RIGHT BUTTON
     function nextSlide() {
+    
 
         for (let index = 0; index < radiobuttons.length; index++) {
             if (radiobuttons[index].checked) {
@@ -771,6 +774,7 @@
     //SWIPE ONE SLIDE BACK AFTER CLICKING ON THE LEFT BUTTON
     function previousSlide() {
 
+
         for (let index = 0; index < radiobuttons.length; index++) {
             if (radiobuttons[index].checked) {
 
@@ -789,6 +793,7 @@
     }
 
 
+
     //ADAPT SCREEN TO SLIDEAMOUNTS AFTER RESIZE
     function resizeFn() {
         var slider = document.getElementById("slider__innerId");
@@ -801,15 +806,17 @@
             resetRadio();
         } else if (window.innerWidth > widthRange[1]) {
             slider.style.width = (radiobuttons.length * 100) + "%";
+            CheckRadioButton(radiobuttons[0]);
         }
-
     }
     window.onresize = resizeFn;
     resizeFn();
 
+
     //ACTIVATE RADIOBUTTON AND DEACTIVATE ALL OTHER RADIOBUTTONS
     function CheckRadioButton(myElem) {
 
+ 
         var slider = document.getElementById("slider__innerId");
 
         for (let index = 0; index < radiobuttons.length; index++) {
@@ -838,8 +845,8 @@
         return check;
     };
 
-    //PAGEONLOAD
-    window.onload = function() {
+        //PAGEONLOAD
+        window.onload = function() {
         var slider = document.getElementById("slider__innerId");
 
         for (let index = 0; index < radiobuttons.length; index++) {
@@ -852,19 +859,20 @@
         radiobuttons[0].parentNode.style.filter = "none";
         radiobuttons[0].parentNode.style.opacity = "1";
 
+       
         slider.style.width = (radiobuttons.length * 100) + "%"
         if(window.mobileCheck()){isMobile = true}else{isMobile = false}
 
         resizeFn();
+       
     };
 
 
-
-    //MOUSESWIPE=============================================================
-    var startClientX;
+//MOUSESWIPE=============================================================
+var startClientX;
     var DeltaSlide;
     var IsClicking;
-    var DeadZone = 5;
+    var DeadZone = 7;
 
     //ONCLICK
     window.addEventListener('mousedown', function(event) {
@@ -903,16 +911,13 @@
 
     function HasSlided(event) {
 
-        if (5 < DeltaSlide) {
+        if (7 < DeltaSlide) {
             previousSlide();
-        } else if (-5 > DeltaSlide) {
+        } else if (-7 > DeltaSlide) {
             nextSlide();
         }
         console.log(DeltaSlide);
     }
-
-
-    
 </script>
 
 </html>
